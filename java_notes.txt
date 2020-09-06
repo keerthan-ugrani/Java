@@ -1,0 +1,1534 @@
+Valid identifiers in java:
+-have to start with alpha, underscore but not any special chararcter or number
+-cannot use any special character other than $ and _
+
+Reserved words:
+-53 reserved words
+-50 keywords- 48 user keywords, 2 unused-got, const
+-48 user keywords:
+	keywords for datatypes:
+	1. byte
+	2. short
+	3. int 
+	4. long 
+	5. float 
+	6. double 
+	7. boolean 
+	8. char
+keywords for flow control:
+1.if 
+2.else 
+3.switch
+4.case
+5.default
+6.while
+7.do
+8.for
+9.break
+10.continue
+11.return
+
+kewords for modifiers:
+1.public
+2.private protected
+static final
+abstract
+synchronized
+native
+strictfop(1.2v)
+transient
+volatile
+
+keywords for exceptional handling:
+try 
+catch 
+finally 
+throw 
+throws
+assert(1.4v)
+
+class related keywords:
+class
+interface
+extends
+implements
+package
+import
+
+object related keywords:
+new
+instanceof
+super
+this
+
+void return type keyword
+in java return type is mandatory. if a method wont return anythunh then we have to declare that metal with void return type
+but in c lang return type is optional and default return type is "int"
+delete is not keyword as it is a work of garbage collector to clear the data
+
+Unused keywords:
+goto: usage of goto created several problems in old languages and hence some people banned this keyword in java
+const: use final instead of const.
+
+goto and const are unused keywords and if used will get a compile time error
+
+-3 reserved literal 
+1. true values for boolean datatypes
+2. false values for boolean datatypes 
+3. null: deafult value for object reference
+
+enum(1.5v) keyword:
+we can use enum to define a group of named constants 
+
+conclusions:
+1. All 53 reserved words in java contains only lower case alphabets symbols
+2. In java we have only new keyword and delete is not keyword as it is a work of garbage collector to distruct the useless objects
+3. The following are new keywords in java:
+-strictfop:
+-assert
+-enum
+
+In java every var and every expression has soeme type
+each and every datatype is clearly defined, every assignment should be chcekd by compiler for type compatibility
+because of above reasons we can conclude java language is strongly typed programming language
+java is not considered as pure oop lang because several oop features are not satisfied by java like 
+operator overlaoding and multiple inheritnce etc
+moreover we are dependeing premitiive datatypes which are non objects
+
+primitive datatypes:8
+-numeric datatypes:
+	Integral datatypes:
+		byte short int long
+	floating point datatypes
+		float double
+
+-non numeric datatypes:
+	char
+	boolean
+
+Except boolean and char remaining datatypes are considered as signed datatypes because we can represent both positive and negative numbers
+
+1. byte: size=1byte(8bits) 1st bit reserved for sign(most significant bit)
+	max_value= + 127
+	min_value= -128
+	range= -128 to +127
+The most significant bit act as sign biyt
+0 means +ve number 
+1 means -ve number
+positive numbers will be represented directly in the memory
+negative numbers will be represented in 2's compliment form
+
+byte b = 10(valid)
+byte b = -127(valid)
+byte b = 128(invalid, compile error: possible loss of precision found int required byte )
+byte b = 10.5(invalid, compile error: possible loss of precision found double required byte)
+byte b = true(invalid, ce: incompatible types found boolean required byte)
+byte b = "string"(incompatible types found: java.lang.string required:byte)
+byte is the best choice if we want to handle the datat in terms of streams either from the file or from the networks(filer supported form or netwk supported form is byte)
+
+2. short:
+	size: 2 bytes(16 bits)
+	range = -2^15 to 2^15 -1 [-32768 to 32767]
+this is the most rarely used data type in java.
+short s = 32767
+short s = 32768(ce: PLP, found: int required: short
+short s = true(ce:incompatible type found boolean req short)
+short s = 10.5(ce:plp, found double req int)
+short datatype is best suitable for 16 bit procesor like 8085 but these processor are completely outdated and hence corresponding short datatype is also outdated data type
+
+3. int:
+	size = 4 bytes(32 bits)
+	range= -2^31 to 2^31-1 [-2147483648 to 2147483647]
+int x = 2147483648;(ce: integer number too large)
+int x = 2147483648l;(ce: plp, found long req int)
+int x = true;(ce: incompatible type found boolean req int)
+
+long:
+	sometimes int may not enough to hold big values then we should go for long type 
+	ex1: the amount of dist travelled by light in thousand days to hold these values int may not enough we should go for long data.
+	the number of char present in a big file may exceed int range hence the writeen type of length method is long bit not int
+	long l = f.length;
+	size = 8 bytes;
+	range= -2^63 to 2^63-1
+Note: all the above data types(byte short int long meant for representing integral values if we want to represent floating point values then we shoild go for floating point dadatypes)
+
+floating point datatypes:
+float:if we want 5-6 decimal places of accuracy then we should go for float 
+float followa single precsiion 
+size 4 bytes
+-3.4e38 to 3.4e38
+double: if we want 14-15 decimal places of accuracy then we should go for double
+double followa double precesion
+size 8 bytes
+-1.7e38 to 1.7e38
+
+boolean:
+size: not applicable(virtual machine dependent)
+range: not applicable(but allowed values are true/false)
+
+boolean b = 0;(ce: incompatible types found int req boolean)
+boolean b = True;(ce:cannot find symbol var true location class test)
+
+int x=0;
+if(x){ sop("hello");}
+else{ sop("hi");}
+ce: incompatible error found int req boolean
+
+char:
+size of char: 2 bytes in java but 1 byte in c and c++ because java is unicode language and c, c++ are ASCII lang and the no of diff ASCII characters are <= 256 to represewnt these 256 characters 8 bits are enough.
+but java is unicode based and the number of diff unicode char are >256 and less <= 65536 to represent these many charcters may not enough then we should go for 16 bits hnce the size of char in java is 2 bytes
+range: 0 to 65,535
+
+Note: null is the default value for object reference but not for primitive data types. if we are trying to use for primitive then we will get compile time error.
+ex: char ch = null;
+
+
+
+Literals:
+a constant value which can be assigned to the variable is called a literal.
+int x = 10;
+int-> keyword;
+x-> identifier;
+10-> literal;
+
+Integral literals:
+for integral data types(byte short int long) we can specifyy literal value in the following ways:
+1. Decimal Literal(base 10): allowed digits are 0 to 9;
+2. octal form(base 8): allowed digits are 0 to 7, literal value hould be prefixed with 0;
+3. hexadecimal form(base 16) : allowed digits are 0 to 9, a to f; for extra digits(a to f) we can use both lower case and upper case characters this is one of very few areas where java is not case sensitive. literal value should be prefixed with 0X; ex: int x = 0X10;
+
+These are only possible ways to specify literal value for integral data types;
+Every integral literal by default is int type, but we can specify explicitly as by suffixed with l or L; ex= 010l;0X10L;
+there is no direct way to specify the byte and short literals explicitly but indirectly we can specify. whenever we are assigning integral literal to thye byte variable and if the value within the range of byte then compiler treats it automatically as byte literal. similarly short literal also
+
+floating point literals:
+by default every floating point literal is of double type and hence we cant assign directly to the float variable but we cans pecify floating point literal as float type by suffixed with f or F.
+ex: float f=123.456
+ce: plp found double req float
+float f = 123.456F;
+double d = 123.456;
+
+we can specify explicitly floating point literal as double type by suffixing with d or D ofcourse this convention is not required.
+double d = 123.456D;
+float f = 123.456D;
+ce: plp found double req float;
+
+we can specify floating point literals only in decimal form and we cant specify in octal and hexadecimal forms
+ex: double d = 1233.456;
+double d= 123.456;
+double d=0X1234.56;
+ce: malformed floating pointy literal;
+
+we can assign integral literal directly to floating point variable and that integral literal can be specified either in decimal octal or hexa forms
+double d = 0786;
+ce:integer number too large
+double d = 0786.0;(valid)
+double d = 0XFace;(valid)
+double d = 0XFace.0;(invalid)
+
+w ecant assign floating point lietrals to integral types;
+double d = 10
+int x = 10.0;(invalid)
+
+we can specify floating point literal even in exponential form( scientific notation) 
+double d=1.2e3;
+float f 1.2e3;(invalid)
+float f = 1.2e3F;(valid)
+
+boolean literals:
+the only allowed values for boolean are true or false;
+boolean b = true;
+boolean b = 0;ce:incompatible types;
+boolean b = True;(invalid)
+boolean b = "true";(invalid)
+
+char literals:
+we can specify char literals as single character within single quotes;
+char ch = 'a';
+char ch = a;(invalid)ce: cannot find symbol variable a;
+char ch = "a";(ce:incompatible types found string req char
+char ch = 'ab';(invalid)ce:unclosed char literal,not a statement
+char ch = 97;=>a
+we can specify char literal as integral literal which represents unicode value of the character and that integral literal can be specified in decimal octal or hexa forms but allowed range is 0 to 65535;
+ex: char ch = 0Xface;(valid)
+char ch = 0777;(valid)
+char ch = 65535;(valid)
+char ch = 65536;(invalid)ce: plp found int req char
+we can represent char literal in unicode representation which is nothing but '\uxxxx' (4 digit hexa decimal number)
+char ch = '\u006';=>u
+
+
+every escape chr is valid char literal
+char ch = '\n';
+char ch = '\t';
+char ch = '\m';ce:illegal escape char
+
+escape character(8 escape characters in java):
+\n new line
+\t horizontal tab
+\r carriage return
+\b back space 
+\f form feed
+\' single quote
+\" double quote
+\\ back slash
+
+string literals:
+any sequence of characters within double quotes is treated as string literals
+1.7v enhancements with respect to literals:
+1. binary literals: for integral datat types until 1.6 v we can specify literal value in the following ways
+decimal
+octal
+hexdecimal form
+but from 1.7v onwards we can specify literla value even in binary form also
+allowed digits are 0 and 1
+literal value should be prefixed with 0b or oB
+ex: int x = 0B1111; sop(x);=>15;
+usage of underscore symbols in numeric literals from 1.7v onwards we can use _ symbols betwn digits of numeric literals
+ex: double d = 123456.789
+double d = 1_23_456.7_8_9
+double d = 123_456.7_8_9
+the main advantage of this apprpoach is readability of the code will be improved;
+at the time of compilation these underscore symbols will be removed automatically and hence after compilation the above line will become double d= 123456.789
+we can use more than 1 _ ymbols within the digits double d = 1__23__456.7_8_9
+we can use _ symbols onlly between the digits if we are usisng anywhere else we will get compile time error
+
+byte->short->int->float->double
+	      ^
+	      |
+	     char
+
+8 byte long value we can assign to 4 byte float variable because both are following diff memory represenattion internally
+float f = 10l;
+sop(f);
+=>10.0
+
+
+
+Arrays:
+1. Introduction
+2. declaration
+3. creation
+4. initialization
+5. array declaration, creation and initialization in a single line
+6. length vs length()
+7. anonymous arrays
+8. elements assignments 
+9. array variable assignments
+
+Introduction:
+an array is an indexed collection of fixed number of homogeniou data elements
+the kmain advantage of array is we can represent huge number of values by using a single variable so that readability of the code will be improved but the main disadvantage of arrays is fixed in size
+that is once we create an array there iss no chance of increasing or decreasing the size based on our requirement hence to use arrays concept we must know the size in advance, which may not be possible always.
+
+Array Declarartion:
+1d array declaration:
+int[] x;(valid): recommonded-
+int []x;(valid)
+int x[];(valid)
+at the time of declaration we cant specify the size otherwise we will get compile time error
+ex: int[6] x;(ivalid)
+int[] x;(valid)
+
+2d array declaration:
+int[][] x;
+int [][]x;
+int[] []x;
+int[] x[];
+int []x[];
+all the above are valid declaration.
+which of the following are valid:
+int[] a,b;
+a-1
+b-1
+int[] a[],b;
+a-2
+b-1
+int[] a[],b[];
+a-2
+b-2
+int[] []a,b;
+a-2
+b-2
+int[] []a,b[];
+a-2
+b-3
+
+if we want to specify dimension bfr the variable that facility is applicable only for first variable in a declaration
+if we are trying to apply for remaining variable we will get compile time error
+ex:int[] []a,[]b,[]c;
+
+3d array declaration:
+int[][][] a;
+int [][][]a;
+int[] [][]a;
+int[] a[][];
+int[] []a[];
+int[][] []a
+int[][] a[];
+int [][]a[];
+int []a[][];
+all the above are valid declarations;
+
+Array creation:
+int[] a = new int[3];
+every array in java is an object, hence we can create arrays by using new operator.
+for every array type corresponding classes are available and these classes are part of java language and not available to the programmer level;
+int[] a = new int[3];
+sop(a.getClass().getName());=>[I
+
+array type | corresponding class name
+int[][]		[[I
+int[]		[I
+double[]	[D
+short[]		[S
+byte[]		[B
+boolean[]	[Z
+
+1. at the time of array creation compulsory we should specify the size otherwise we will get compile time error
+int[] x=new int[];(invalid)
+int[] x = new int[6];(valid)
+int[] x = new int[0];(valid)
+
+2. it is legal to have an array of size 0 in java
+3. if we are trying specify array size with negative int value then we will get runtime exception saying negative array size exception.
+4. to specify array size the allowed data types are byte short char int if we are trying to specify any other type then we will get compile time error.
+5. The max allowed array size in java is 2147483647 which is the max value of int data type.
+int[] x = new int[2147483647];(valid)
+int[] x = new int[2147483648];(invalid)ce: int number too large
+even in the first case we may get runtime exception if sufficient heap memory not available.
+
+2d array creation:
+in java 2d array not implemented by using matrix style, some people followed array of arrays approach for multi dimensional array creation
+the main advantage of this approach is memory utilization will be improved.
+ex1: int[][] x = new int[2][];
+x[0] = new int[2];
+x[1] = new int[3];
+
+int[][][] x= new int[2][][];
+x[0] = new int[3][];
+x[0][0] = new int[1]
+x[0][1] = new int[2];
+x[0][2] = new int[3];
+x[1] = new int[2][2];
+
+which of the foll array declarations are valid:
+int[] a= new int[];(invalid)
+int[] a = new int[3];(valid)
+int[][] a = new int[][];(invalid)
+int[][] a = new int[3][];(valid)
+int[][] a = new int[][4];(invalid)
+int[][] a = new int[3][4];(valid)
+int[][][] a = new int[3][4][5];(valid)
+int[][][] a = new int[3][4][];(valid)
+int[][][] a = new int[3][][5];(invalid)
+int[][][] a = new int[][4][5];(invalid)
+
+Array initialization:
+once we create an array every element by default initializewd with default values that is 0;
+ex: int[] x = new int[3];
+sop(x);=>[I@3e25b6
+sop(x[0]);=>0
+whenever we are trying to print any reference variable internally toString() method will be callled which is implemented by default to return the string in the following form:
+classname@hashcode_in_hexadecimalForm
+
+int[][] x = new int[2][3];
+sop(x);=>[[I@3e2a6
+sop(x[0]);=>[I@3e256
+sop(x[0][0]);=>0
+
+int[][] x = new int[2][];
+sop(x);=>[[I@3e2a6
+sop(x[0]);=>null
+sop(x[0][0]);=>null pointer exception
+
+Note: If we are trying to perform any operation on null then we will get runtime exception saying null pointer exception;
+
+Once we create an array every array element by default initialized with default values, if we are not satisfied with default values then we can override these values with our customized values;
+int[] x = new int[6];
+x[0]=10....x[5]=60;
+x[6] = 70; re: ArrayIndexOutofBoundException
+x[-6]=80;re: ArrayIndexOutofBoundException
+x[2.5]=90;ce:plp found double req int
+
+If we are trying to access array element with out of range index(either positive value or negative int value) then we will get runtime exception aying arrayIndexOutOfBoundException
+
+Array declarartion, ctreation and initialization in a single line:
+We can declare create and initialize an array in a single loine(shortcut represenatation):
+int[] x = {10,20,30};
+char[] ch = {'a','e','i','o','u'};
+String s = {"a","aa","aaa"};
+
+we can use this for multidimensional arrays also, 
+int[][] x = {{10,20},{30,40,50}};
+
+int[] x = {10,20,30}
+int[] x;
+x={10,20,30};
+ce: illegal start of expression;
+
+length vs length():
+
+length:
+length is final variable applicable for arrays
+length variable represents the size of the array 
+ex:int[] x = new int[6];
+sop(x.length());=>cannot find symbol: method length() found:int
+sop(x.length);(valid)
+
+String s = "hello";
+sop(s.length);=>ce: cannot fiond symbol variable length location:java.lang.String
+sop(s.length());=>5
+
+length() method is a final method applicable for string objects, length method returns number of character preent in the string.
+
+Note: length variable applicable for arrays but not for string objects whereas length method applicable for string objects but not for arrays.
+
+int[][] x = new int[6][3];
+sop(x.length);=>6
+sop(x[0].length);=>3
+
+In multidimensional array length variable represents only base size but not total size;
+There is no direct way to find total length of multidimensional array but indirectly we can find as follows:
+x[0].length + x[1].length + x[2].length;
+
+anonymous arrays:
+An array without name;
+sometimes we can declare array without names such arrays are called anonymous arrays;
+the main purpose of anonymous arrays are jusst for instant use(one time usage);
+
+we can create anonymous array as follows:
+new int[]{10,20,30,40};
+
+while creating anonymous arrays we cant specify the size otherwise we will get compile time error
+new int[3]{10,20,30};
+
+we can craete multidimensional anonymous arrays also
+new int[][]{{10,20},{10,20,30}};
+
+based on our requirement we can give the name for anonymous array then it i not longer anonymous.\
+int[] x = new int[]{10,20,30};
+
+class Test
+{
+	p s v main(String[] args)
+	{
+		sum(new int[]{10,20,30});
+	}
+	p s v sum(int[] x)
+	{
+		int total = 0;
+		for(xi :x)
+		{
+			total = total + x;
+		}
+	sop("the sum is "+total);
+	}
+}
+
+In the above example just to call sum method we required some array but after completing the sum call we are not using that array any more hence for this one time requirment anonympus array is the best choice
+
+Array element assignments:
+case_1: in the case of premitive arrays as array elements we can provide any type which can be implicitly promoted to declared type;
+int[] x = new int[5];
+x[0]=10;
+x[1]='a';
+byte b = 20;
+x[2] = b;
+
+in the cae of float type arrasy the allowed datatypes are byte short char int long float.
+
+case_2: object type array:
+In the case of object type arrays as array elements we can provide either declared type objects or it's child class objects.
+ex1: Object[] a = new Object[10];
+a[0] = new Object();
+a[1] = new String("Durga");
+a[2] = new Integer(10);
+
+ex2:
+Number[] n = new NUmber[10];
+n[0] = new Integer(10);
+n[1] = new Double(10.5);
+n[2] = new String("HEllo");ce: incompatible types found java.lang.String req java.lang.Integer
+
+Case_3: 
+Runaable[] r = new Runnable[10];
+r[0]= new Thread();
+r[1] = new String("Durga");CE: incompatible types
+for interface type arrays as array elements its implimentation class objects are allowed
+
+primitive arrays=>array type which can be implicitly promoted to declared type
+object type arrays=>either declared type or its child class objects
+abstract class type arrays=>its child class objects
+interface type array=> its implimentation objects are allowed
+
+array variable assignments:
+case_1:
+int[] x = {10,20,30,40};
+char[] ch = {a,b,c,d};
+
+int[] b =x;
+int[] c =ch;=>ce:incompatible types found char array req int array
+element level promotions are not applicable at array level for ex: char element can be promoted to int type whereas char array cannot be promoted to int array;
+
+which of the following promotions will be performed automatically?:
+char->int;(valid)
+char[]->int[];(invalid)
+int->double;(valid)
+int[]->double[];(invalid)
+float->int;(invalid)
+float[]->int[];(invalid)
+String->Object;(valid)
+String[]->Object[];(valid)
+but in the case of object type arrays child class type array can be promoted to parent class type array.
+ex: String[] s ={"a","b","c"};
+Object[] a = s;
+
+case_2:
+int[] a={10,20,30,40,50};
+int[] b = {10,20};
+whenever we are assigning one array to another array internal elements wont be copied just reference varibale will be reassigned
+
+a=b;(valid)
+b=a;(valid)
+
+case_3:
+int[][] a = new int[3][];
+a[0]=new int[4][3];ce:incompatible types found 2d array req 1d array;
+a[0] = 10;(invalid)=>ce: incompatible types found int req int[]
+a[0] = new int[2];(valid)
+whenver we are assigning one array dimensions must be matched for ex in the place of 1d array we should provide 1d array only if we are tring to provide any other dimension then we will get compile time error
+whenever we are assigning one array to another array both dimensions and types must nbe matched but sizes are not required to match.
+
+ex1: 
+class test
+{
+	p s v main(String[] args)
+	{
+		for(int i=0;i<=args.length;i++)
+		{
+			sop(args[i]);
+		}
+	}
+}
+=>A B C Array index out of bound exception
+
+class test
+{
+	p s v main(String[] args)
+	{
+		String[] argh={"x","y","z"};
+		args = argh;
+		for(String s: argh)
+		{
+			sop(s);
+		}
+	}
+}
+=>xyz
+
+int[][] x = new int[4][3];->5 objects
+x[0] = new int[4];->1 object
+x[1] = new int[2];->2 object
+x = new int[3][2];->4 object
+
+How many objects created?
+12
+How many objects eligible for garbage collection?
+8
+
+Types of variables:
+division1:
+based on type of value represented by a variable all variables are divided into two types,
+1. primitive variables: can be used to represent primitive values
+ex: int x= 10;
+
+2. reference variables: can be use dto rfeer objects Student s = new Student();
+
+division2:
+based on psoition of declaration and behaviour all variables are divided into 3 types:
+1. instance variables;
+2. static variables;
+3. local variables;
+
+1. Instance Variables:
+-If a value of the variable is varied from object to object such type of variables are called instance vartiables.
+-For every object a separate copy of instance variable will be created.
+
+Instance variable should be decalared within the class directly but outside of any method or block or constructor;
+Instance variable will be created at a time of object creation and destroyed at the time of object distruction.
+hence the scope of instance variable is exactly same as scope of objects
+Instance variable will be stored in the heap memory as a part of object
+We can't access instance variable directly from static area but we can access by using object reference.
+but we can acccess instance variables directly from instance area;
+
+ex:
+class test{
+	int x = 10;
+	p s v main(String[] args)
+	{
+		sop(x);ce: non stattic variable x cannot be referenced from static content
+	}
+}
+
+Class test{
+int x;
+double d;
+boolean b
+String s;
+p s v main(String args){
+Test t1= new Test();
+sop(t1.x);0
+sop(t1.d);0.0
+sop(t1.b);flase
+sop(t1.s);null
+}
+}
+
+for instance variables jvm will always provide default values and we are not required to perform initialization explicitly;
+
+Instance variables also known as object level variables or attributes.
+
+Static variables:
+If the value of a variable is not  varied from object to object then it is not recommended to declare variable as instance var we have to declare such type var at class level by usimg static modifier;
+In the case of instance var for every object a separarte copy will be created but in the case of static varibales a single copy will be created at a class level and shared by every object of the class;
+Static var should be declared within the class direclty but outside of any method or block or constructor
+Static var will be created at the time of class loading and destroyed at the time of class unloading hence scope eof static variables is exactly same as scope of that class.
+
+>Java test
+1. Start JVM
+2. Create and start main thread
+3. Locate Test.class file
+4. Load Test.class-> static variable creation
+5. Execute main method
+6. Unload Test.class-> static variable destruction
+7. Terminate main Thread
+8. Shutdown JVM
+
+class test{
+static int x = 10;
+psv main(String[] args){
+Test t = new Test();
+sop(t.x);
+sop(Test x);recommende
+sop(x);
+}
+}
+
+we can access static var either by objkect ref or by class name but recomendded to use class name
+within the same class it is not required to use class name and we can access directly.
+We can access static var directly from both instance and static areas.
+for static variables jvm will provide default values and we r not required to perform initilaization explicitly;
+Class test{
+static int x;
+static double d;
+static boolean b
+static String s;
+p s v main(String args){
+Test t1= new Test();
+sop(t1.x);0
+sop(t1.d);0.0
+sop(t1.b);flase
+sop(t1.s);null
+}
+}
+
+static var also known as class level var or fields;
+
+class Test{
+static int x=10;
+int y=20;
+psv main(s a)
+{
+Test t1 = new Test();
+t1.x = 888;
+t1.y = 999;
+Test t2 = new Test();
+sop(t2.x+t2.y);=> 888+20
+}
+}
+
+Local variables:
+Sometimes to meet temporary requirements of the programmer we can declare variables inside a method or block or constructor such type of vriables are called loacal var or temp var or stack var or automatic var;
+Local varfiable will be stored inside stack memory;
+loacl var will be created while executing the block in which we declared it. once the block execution completes automatically local var will be destroyed hence the scope of local var is a block in which we declared it.
+class test{
+psvm(st[] a){
+int i=0;
+for(int j=0;j<3;j++)
+{
+i=i+j;
+}
+sop(i+j);ce:cannot find symbol var j location class Test;
+}
+}
+
+class Test{
+psvm(st a){
+try{
+int j = Integer.parseInt("ten");
+}
+catch(NumberFormatException e)
+{
+j=10;
+}
+sop(j);ce: cannot find symbol var j location class Test;
+}
+}
+
+For local var jvm wont provide default values compulsory we should perform initilaization explicitly before using that var that is if we are not using then it is not required to perform initialization;
+Class test{
+p s v main(String args){
+int x;
+sop("hello");=>hello
+}
+}
+
+Class test{
+p s v main(String args){
+int x;
+sop(x);ce:var x might not have been initialized
+}
+}
+
+Class test{
+p s v main(String[] args){
+int x;
+if(args.length>0){
+x=10;
+}
+sop(x);ce: var x might not have been initialized;
+}
+}
+
+Class test{
+p s v main(String[] args){
+int x;
+if(args.length>0){
+x=10;
+}
+else{
+x=20;
+}
+sop(x);
+}
+}
+
+Note:
+1. it is not recommended to perform initialization for local variables inside logical blocks because there is no guarantee for the execution of these blocks always at run time
+2. it is highly recommended to perform initilization for local var at time of declarartion  at least with default values.
+
+class Test
+{
+int x = 10;
+static int y = 20;
+psvm(s[] ar){
+int z = 30;
+}
+}
+
+The only applicable modifier for local variables is final by mistake if we are trying to apply any other modifier then we will get compile time error;
+class Test{
+psvm(st[] arg){
+public int x= 10;
+private int x =10;
+protected innt x =10;
+static int x =10;
+volatile int x= 10;
+}
+}=> ce: illegal start of expression
+
+If we are not declaring with any modifier then by default it is a default, but this rule is applicable only for instance and static variables but not for local variables;
+class Test{
+int x = 10;
+static int y = 20;
+psvm{
+int z = 30;
+}
+}
+
+Summary:
+1. For instance and static var jvm will provide default values and we are not required to perform initilization explicitly but for local var jvm wont provide default values compulsory we should perform initilaization explicitly before using the variable;
+2. Instance and static var can be acccessed by multiple threads simultaneously and hence these are not thread safe but in the case of local variables for every thread a separate copy will be created and hence local var are thread safe.
+3. Every var in java should be either instance or static or local
+4. Every instance or static or local var in java should be either primitive or reference
+5. Once we create an array every array element is initialized with default values irresepective of whether it is instance static or local array.
+
+
+Var-arg methods(variable number of argument methods):
+until 1.4v we cant declare a method with variable number of arguments, if there is a change in number of argumenst compulsory we should go for new method
+it increases length of a code and reduces readability to overcome this problem some ppl intoduced var-arg methods in 1.5v according to this we can declare a method which can take var number of arguments such type of methods are called var-arg methods.
+method(int... x)
+we can call this method by passing any number of int values including 0 number
+m1();
+m1(10);
+m1(10,20);
+m1(10,20,30);
+all these are valid;
+
+class Test{
+psvm1(int... x)
+{
+sop("var-arg method");
+}
+
+psvm(String[] args){
+m1();
+m1(10);
+m1(10,20);
+m1(10,20,30);
+}
+}
+
+internally var-arg parameter will be converted into 1d array hence within the var-arg method we can differentiate values using index.
+ class test{
+psvm(string[] args){
+sum();
+sum(10,20);
+sum(10,20,30);
+sum(10,20,30,40);
+}
+psv sum(int... x)
+{
+int total=0;
+for x1:x)
+{
+total = total + x1;
+}
+System.out.println("The sum is: "+ total);
+}
+}=>0;30;60;100;
+
+which of the foll are valid var-arg metyhod declaration
+m1(int... x);(valid)
+m1(int ...x);(valid)
+m1(int...x);(valid)
+m1(int x...);(invalid)
+m1(int. ..x);(invalid)
+m1(int .x..);(invalid)
+
+we can mix var-arg params with normal params 
+m1(int x,int... y);(valid)
+m1(String s, double... y);(valid)
+m1(double... d, String s):(invalid)
+If we mix normal param with var-arg params then var-arg params should be last params
+
+Inside var-arg method we can take only one var-arg parameter and we cant take more than one var-arg params
+m1(int.. x, double... d);
+
+Inside a class we cant declare var arg method and the corresponding 1d array method simulataneously otherwise we will get compile time error
+class Test{
+psvm1(int... x)
+{
+sop("int...");
+}
+psvm1(int[] x)
+{
+sop("int[]");
+}
+}=>ce; cannot declare both m1(int[]) and m1(int..) in Test
+
+
+In general var-arg method will get least priority that is if no other method matched then only var-arg method will get the chnace it is exactly same a default case inside switch
+class test
+{
+psvm1(int... x)
+{
+sop("var-arg method");
+}
+psvm1(int x)
+{
+sop("General method");
+}
+psvm(String args)
+{
+m1();=>var-arg method
+m1(10,20);=>var-arg method
+m1(10);=>General method
+}
+}
+
+equivalence btwn var-arg parameters and 1d array
+Case1:
+wherever 1d array present we can replace with var-arg parameters
+m1(int[] x) => m1(int... x)
+main(String[] args) => main(String... args)
+m1(new int[]{10});
+m1(new int[]{10,20});
+m1(new int[]{10,20,30});
+
+wherever var-arg params present we cant replace with 1d array 
+m1(int... x) => m1(int[] x);(invalid)
+
+m1(int.. x) we can call this method by passing a group of int values and x will become 1d array
+m1(int[]... x) we can call this method by passing a group of 1d arrays and x will become 2d array
+
+main-method:
+whether class contaions main method or not under that the main method is declared acc to requirements are not these thing wont be checked by the compiler at runtime jvm is respondible to check thesed things, if a jvm unable to find main method then we will get runtime exception saying no such method error: main();
+
+class Test{
+
+}=>RE: NoSuchMethodError:main;
+
+at run time jvm always searches for the main method with the following prototype
+public static void main(String[] args)
+public: to call by jvm from anywhere
+static: without existing object also jvm have to call this method
+void: main() method does not return to jvm anything
+main(): this is the name configured in JVM
+String[] args: command line arguments
+
+the above syntax is very strict and if we perform any change then we will get runtime exception saying no such methdo error:main
+even though above syntax is very strict the foll changes are acceptable
+instead of public static we can take "static public" that is the order of modifeir is not imp in java
+we can declare string array in any acceptable form
+   main(String[] args)
+   main(String []args)
+   main(String args[])
+instad of args we can take any valid java identifier main(String[] hello)
+we can replace string[] with var-arg parameters main(String... args)
+
+we can declare main method with the following modifiers final synchronized strictfp
+
+class test{
+staic final synchronized strictfp public void main(String... hello)
+{
+sop("valid main method");
+}
+}
+
+which of the follo main method declarations are valid:
+public static void main(String args[])Inv
+public static void Main(String[] args)Inv
+public void main(String[] args)Inv
+public static int main(String[] args)Inv
+final synchronized strictfp public void main(String[] args)Inv
+final synchronized strictfp public static void main(String[] args)Val
+public static void main(String... args)Val
+
+in which of the above cases we will get compiler error
+we wont get compile time error anywhere but except last two cases in remaining we will get run time exception saying no such method error:main()
+
+Case1:
+Overloading of the main method is possible but jvm will always call string array argument main method only the other overloaded method we have to call explicitly like normal method call:
+class test{
+psvm(String[] args)
+{
+sop("String");
+}
+psvm(int[] args)
+{
+sop("int[]");
+}
+}
+o/p= String[]
+
+case2:Inheritence concept applicable for main method hence while executing child class if child does not contain main method then parent class main method will be executed
+class P{
+psvm(String[] args){
+sop("parent m ain");
+}
+}
+class c extends P
+{
+
+}
+o/p=Parent main; Parent main
+
+case3: It seems overriding concept applicable for main method, but it is not overriding and it is method hiding
+class P{
+psvm(String[] args){
+sop("parent m ain");
+}
+}
+class c extends P
+{
+sop("Child main");
+}
+o/p=Parent main; Parent main
+
+Note: For main method inheritance and overloading concepts are applicable but overrding concept is not applicable, instead of overriding method hiding is appplicable;
+
+1.7v enhancements wrt main method:
+until 1.6v if the class doesnt contain main method then we will get run time exception saying no such method error: main but from 1.7v onwards instead of no such error methoid we will get more elaborated error info
+from 1.7v onwards main method is mandotary to start program execution hence evenb though class contains static block it wont be executed if the class doesnt contain main method.
+
+class test
+{
+static
+{
+sop("static");
+}
+psvm(String[] args)
+{
+sop("main");
+}
+}
+=> 1.6v= static;main;
+=> 1.7v=static;main;
+
+without wrting main method is it possible to print some statements to the console?
+yes, by using static block but only till java 1.6v from 1.7v onwards it is impossible to print some statements to the console without writing main method;
+
+Command line arguments:
+the arguments which are passing from command prompts are called command line arguments if these command line arguments jvm will create an array and by passing that array as arg jvm will call main method
+java test a b c 
+args[0] =a 
+args[1] = b
+args[2] = c
+
+The main objective of command line argumenst is we can customize behaviour of the main method.
+Within main method command line argumenst are available in string form
+
+Java coding Standards:
+whwnver we are writing java code it is highly recommended to follow coding standards
+whener we are writing any component its name should reflect the purpose of its component(functionality)
+the main advantage of this approaxh is readability and maintainibility fo the code will be improved
+Usually calss names are nouns should start with upeper case character and if it contains multiplewords then every inner word should start with upper case character
+ex:String;STringBuffer;Account;
+
+coding standars for interfaces:
+Usually interface names ate adjectives should start with upper case character and if it contains smultiple words then every inner word should start with upper case character
+Runnable;Serializable;Comparable
+
+coding standards for methods:
+Usually method names are either webs or web noun combination should start with lowercase alpha symbol n if it cointains multiple words then every inner word should start with upper case characters it is called a scamel case convention;
+ex:print()
+getName()
+setSalary()
+sleep()
+run()
+eat()
+start()
+
+coding standards for variables:
+usually variable names are nouns should start with lowercase aplpha symbols and iof it contains multiple words then every inner word starts with upper case char(camel case convention);
+
+coding standards for constants:
+Usually constant names are nouns should contain only upper case characters and if it contains multiple words then these words are separated with underscore symbols
+ex:MAX_VALUE
+MAX_PRIORITY
+NORM_PRIORITY
+MIN_PRIORITY
+PI
+
+Note: usually we can declare constants with public static and final modifiers;
+
+javaBean coding standards:
+A java bean is a java class with private properties and public getter and setter methods.
+public class studeentBean
+{
+private String name;
+public void setName(String name)
+{
+this.name=name;
+}
+public String getName()
+{
+return name;
+}
+}
+
+class name ends with bean is not a official convention from SUN
+
+syntax for setter method:
+it hsould be public method
+it should be void
+method name should be prefixed with set
+it should not be no arguments method
+
+syntax for getter method:
+it should be public
+return type should not be void
+method name should prefixed with get
+it should not take any argument
+
+Note: for boolean properties gettermethod name is prefixed with get or is but recommended to ue ease
+private boolean empty;
+public boolean getEmpty()
+{
+return empty;
+}
+public boolean isEmpty()
+{
+return empty;
+}
+
+coding standards for Listeners:
+case 1:
+to register a listener
+it should be public
+return type should be void
+method name should be prefixed with add
+public void addMyActionaListener(myActionListener l);
+
+case2:
+to unregister a listener
+it hsould be public
+return type should be void
+method name should be prefixed with remove
+public void removeMyActionListener(MyActionListener l);
+
+kathy sierra:best book for scjp
+
+
+Operators and assignments:
+1. Increemnt and decrement Operators:
+x = 10
+y=++x	y = 11	x = 11
+y = x++	y=10	x=11
+y = --x	y=9	x=9
+y = x--	y=10	x=9
+
+we can apply increment and decrement operators only for variables but not for constant vales
+if we are trying to apply for constant values thenw e will get compile time error
+int x = 10
+int y = ++x
+sop(y);(valid)
+
+int x = 10
+int y = ++ 10
+sop(y);(invalid)ce:unexpected type req variable found value
+
+Listing of increment and decrement operators not allowed:
+int x = 10;
+int y = ++(++x);
+sop(y);(invalid) ce: unexpected type req variable found value
+
+for final variables we cant apply increment and decrement operators
+final int x =10
+x = 11
+sop(x)
+ce: cannot assign a value to final var x
+
+final int x = 10
+x++;
+sop(x);
+ce: cannot assign a value to final var x
+
+we can apply increment and decrement operator for every primitive type except boolean
+
+int x = 10
+x++
+sop(x)
+(valid)
+
+char ch = 'a'
+ch++
+sop(ch);
+(valid)
+
+souble d = 10.5
+d++
+sop(d)
+(valid)
+
+boolean b = true
+b++
+sop(b)
+(invalid);ce: operator ++ cannot be applied to boolean type
+
+difference between b++ and b = b+1
+if we apply any arithematic operators between two var a and b the result type is laways max(int,type of a, type of b)
+ex 1:
+byte a = 10
+byte b = 10
+byte c = a+b
+sop(c);
+ce: possible loss of precision found int req byte
+
+type casting of the above operation can be made it valid
+byte c = (byte) (a+b)
+
+ex2:
+byte b = 10;
+b = b+1;
+sop(b);
+ce: possible loss of precision found int req byte
+
+b = (byte)(b+1);(vlaid)
+
+But in the case of increment and decrement operators internal type casting will be performed automatically;
+b = (type of)(b+1)
+byte b = 10
+b++;
+sop(b);(valid)
+
+if we apply any arithematic operator between two var a and b the result ytype is always max9int, type of a, type of b)
+byte + byte = int
+byte + short = iont
+short + short = int
+byte + long = lopng
+long + double = double
+float + long = long
+char + char = int
+char + double = double
+
+sop('a'+'b');=>195
+sop('a'+0.89);=>97.89
+
+Infi ity:in i ntegral arithematic byte, short, int, long there is no way to represent infinity hence if infinity is the result we will get arithematic exception in intergral arithematic
+ex:
+sop(10/0); Arithematic exception
+
+but in floating point arithematic(float, double) there is a way to represent infinity
+for this Float and Double classes contains the following two constants POSITIVE_INFINITY and NEGATIVE_INFINITY hence even thoufgh result is infinity we wont get any arithematic exception in floating point arithematic
+ex:
+sop(10/0.0);=> Infinity
+sop(-10.0/0);=>Negative Infinity
+
+Nan(Not a Number):
+Int integral arithematic(byte short int long) there is no way to represent undefined results hence if the result is undefined we will get run time exception saying arithematic exception;
+sop(0/0);Arithematic exception
+
+but in floating point arithematic there is a way to represent uindefined results for this Float and Double classes contains NaN constant hence if the result is undefined we wont get arithematic exception in floating point arithematic
+ex:
+sop(0.0/0);=>NaN;
+sop(-0.0/0);NaN;
+
+For any x value including NaN the following expressions returns flase
+x< NaN
+x<= NaN
+x> NaN
+x>= NaN
+x==NaN
+
+for any x value including NaN the following expressions returns true
+x!= NaN;
+
+ex:
+sop(10< Float.NaN);flase
+sop(10<=Float.NaN);flase
+sop(10> Float.NaN);flase
+sop(10>= Float.NaN);flase
+sop(10 == Float.NaN);flase
+sop(Float.Nan == Float.NaN);flase
+sop(10!= Float.NaN);true
+sop(Float.Nan != Float.NaN);true
+
+Arithematic Exceptions:
+It is a run time exception but not compile time error
+It is possible only in integral arithematic but not in floating point arithematic.
+The only operators which cause arithematic exceptions are / and %
+
+String Concatenation operator(+):
+The only overloaded operator in java is + operator sometimes it acts as arithematic addition operator and sometimes it acts as string concatenation operator
+String a = "hello";
+int b = 10;c = 20; d = 30;
+sop(a+b+c+d);hello102030
+sop(b+c+d+a);60hello
+sop(b+c+a+d);30hello30
+sop(b+a+c+d);10hello2030
+if at least one arg is string type then + operator acts as concatenation operator and if both argumenst are number type the + operators acts as arithematic addition operator.
+
+consider the following declaration:
+String a = "hello";
+int b = 10;c = 20; d = 30;
+which of the following expressions are valid:
+a = b+c+d;(invalid)
+a = a+b+c;(valid)
+b = a+c+d;(invalid)ce: incompatible types
+b = b+c+d;(valid)
+
+
+Relational Operators(<,<=,>,>=):
+sop(10<20);True
+sop('a'<10);False
+sop('a'<97.6);True
+sop('a'>'A');True
+sop(true>false);ce:operator > cannot be applied to boolean
+we can apply relational operator for every primitive type except boolean.
+
+sop("hello123">"hello");(invalid);ce: operator > cannot be applied to java.lang.String and java.lang.String
+we cant apply relational operators for object types
+
+sop(10<20);True
+sop(10<20<30);ce: operator < cannot be applied to boolean, int
+listing of relational operators is not allowed otherwise we will get compile time error
+sop(10<20<30);(invalid)
+
+Equality operators(==,!=):
+sop(10==20);false
+sop('a'=='b');false
+sop('a'==97.0);true
+sop(false == flase);true
+we can apply equality operators for every primitive type incluiding boolean also.
+we can apply equality operators for poobject types also for ibject references r1,r2
+r1==r2 returns true iff both references is pointing to same objects;reference comparison or memory comparison
+ex1:
+Thread t1 = new Thread();
+Thread t2 = new Thread();
+Thread t3 = t1;
+sop(t1==t2);flase
+sop(t1==t3);true
+
+ex2:
+Thread t = new Thread();
+object o = new Object();
+String s = new String("hello");
+sop(t==o);flase
+sop(o==s);false
+sop(s==t);ce:incomparable types: java.lang.String and java.lang.Thread
+If we apply equality operators for object types then compulsory there should be some relation between argument types;
+either child to parent or parent to child or same class otherwise we will get compile time error saying incomparable types.
+
+What is difference between == operator and equals() method:
+String s1 = new String("hello");
+String s2 = new String("hello");
+sop(s1==s2);false
+sop(s1.equals(s2));true
+In general we can use == operator for refrence comparison (address comparison) and .equals() method for content comparison:
+
+Note: for any object reference r, r == null is always false but null == null is always true
+String s = new String("durga");
+sop(s==null);false;
+
+String s = null;
+sop(s == null);true
+
+sop(null == null);true
+
+instanceof operator:
+we can use instanceof operator to check the object is of particular type or not;
+
+
+Object o =l.get(0);
+if(o instanceof Student)
+{
+Student s = (Student) o;
+//perform student specific functionalities
+}
+else if(o instanceof Customer)
+{
+Customer c = (Customer) o;
+//perform Customer specific funcionalities
+}
+
+syntax:
+r instanceof x
+r is object reference
+x is class/interface name
+
+
+ex1:
+Thread t = ne Thread();
+sop(t instanceof Thread);true
+sop(t instanceof Object);true
+sop(t instance of Runnable);true
+
+ex2:
+Thread t = new Thread();
+sop(t instanceof String);ce:inconvertible types foun djva.lang.Thread req java.lang.String
+To use instanceof operator compulsory there should be some relation between argument tyypes(either child to partent or parent to child or same type) otherwise we will get compile time error saying inconvertible errors.
+
+Note: for any class or interface x null instance of x is always false.
+sop(null instanceof Thread);flase
+
+Bitwise operators(&, |, ^):
+&, and=> returns true if both are true
+|, or=> returns true if atleast one arg is true
+^, X-OR=> returns true iff both arg are different
+
+sop(true & false);false
+sop(true | false);true
+sop(true ^ false);true
+
+ we can apply these operators for integral types also and you can perform bitwise operation
+sop(4 & 5);4
+sop(4 | 5);5
+sop(4 ^ 5);1
+
+bitwise compliment operators(~):
+sop(~true);ce:operator ~ cannot be applied to boolean
+sop(~4);=>-5
+we can apply this operator only for integral type and noyt for boolean type if we are trying to apply for boolean type then we will get compile time error
+
+4=>0000...0100
+~4=>1111...1011
+2's compliment 0000....0101=>-5
+
+Note: The mopst significant bit acts as sign bit 0 means postive number and 1 means negative number positive number will be represented directly in the memory whereas neg number will br represented indirectly in the twos compliemnt form.
+
+
+Boolean compliment operator(!):
+sop(!4);ce:Operator ! cannot be applied to inty
+sop(!false);true
+we can apply this operator only for boolean types  bb ut not for integral types.
+
+short circuit operrators(&&, ||):
+These are exactly same as bitwise operators & and | except the following differenece:
+& 1. both arguments should be evaluated always 2. relatively performance is low 3. applicable for both integral and boolean types
+&& 1. second arg evaluation is optional 2. relatively performance is high 3. applicable only fort boolean
+
+x&& y=> y will be evaluated iff x is true ie if x is false then y wonty be evaluated
+x || y => y will be evaluated iff x is false then y wont be evaluated if x is true
+
+int x = 10,y = 15;
+if(++x<10 & ++y>15)
+{
+x++;
+}
+else
+{
+y++;
+}
+sop(x+" "+y);
+
+If we replace && with & then we will get run time exception saying arithematic exception division by zero
+
+Type-cast operator:
+there are two types of type-casting:
+1. Implicit Type-casting:
+compiler is responsible to perform implicit type casting
+whenever we are assigning smaller data type value to bigger data type variable implicit type casting will be performed
+it is laos known as widening por upcasting
+there is no loss of information in thois type casting
+the foll are various possible conversions where implicit type casting will be performed:
+byte-short-int-long-float-double
+ex1: int x ='a'
+sop(x);=>97
+
+ex2:
+double d = 10;
+sop(d);=>10.0
+
+Explicit type casting:
+
+
+int x = 130;
+byte b = x;ce:possible loss of precision found int req byte
+byte b = (byte) x;(valid)
+sop(b);-126
+programmer is reponsible to perform explicit type-casting 
+whenever we are assigning bigger data-type value to the smaller data type variable then explicit type casting is required
+it is also known as narrowing or downcasting
+there may be a chance of loss iof information in this type casting
+
+whenever we are assigning bigger value to smaller data type by explicit type casting the most significant nits we have to consider least significant bits
+
+
+Assignment operators:
+there are 3 types of assignment operators:
+1. simple assignments; int x = 10
+2. chained assignments; a=b=c=d
+we cant perform chained assignment directly at the time of declaration
+ex: int a=b=c=d=20; ce: cannot find symbol var b location class Test
+
+3. compound assignment operators; a += b
+int a =10;
+a = += 20;
+sop(a);=>30
+
++=
+-=
+*=
+/=
+%=
+&=
+|=
+^=
+>>=
+>>>=
+
+
+
