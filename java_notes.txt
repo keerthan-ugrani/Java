@@ -1515,10 +1515,12 @@ we cant perform chained assignment directly at the time of declaration
 ex: int a=b=c=d=20; ce: cannot find symbol var b location class Test
 
 3. compound assignment operators; a += b
-int a =10;
-a = += 20;
-sop(a);=>30
+Sometimes assignment operators mixed with some other operators such type of assignment operators are called compund assignment operators.
 
+int a =10;
+a += 20;
+sop(a);=>30
+the following are all possible compound assignment operators in java:
 +=
 -=
 *=
@@ -1528,7 +1530,26 @@ sop(a);=>30
 |=
 ^=
 >>=
+<<=
 >>>=
 
+In the case of compound assignment operators internal type casting will be performed automatically
 
+byte b = 10;
+b = b+1;
+sop(b);=>ce:plp
 
+byte b = 10;
+b++;
+sop(b);11
+
+byte b = 10
+b += 1;
+sop(b);11
+
+int a,b,c,d;
+a=b=c=d=20;
+a += b -= c*= d/= 2;
+sop(a+" "+b+" "+c+" "+d); -160 -180 200 10
+
+conditional Operator(?:)
